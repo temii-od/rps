@@ -11,3 +11,30 @@ function getComputerChoice(){
     const randomNum = Math.floor(Math.random() * 3);
     return options[randomNum];
 }
+
+function getHumanChoice(){
+    const playerChoice = prompt("Enter rock, paper or scissors");
+    return playerChoice.toLowerCase();
+}
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice){
+        resultDisplay.textContent(`It's a tie. Both chose ${humanChoice}`);
+    } else if (
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        humanScore++;
+        resultDisplay.textContent(`Player won. You chose ${humanChoice} and Computer chose ${computerChoice}`);
+    } else {
+        computerScore++;
+        resultDisplay.textContent(`Computer won. Computer chose ${computerChoice} and Player chose ${playerChoice}`);
+    }
+
+    humanScoreDisplay.textContent = humanScore;
+    computerScoreDisplay.textContent = computerScore;
+
+}
+
+
