@@ -57,5 +57,7 @@ function playGame(){
 
 }
 
+startBtn.addEventListener("click", playGame);
+
 
 
