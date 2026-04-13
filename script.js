@@ -12,11 +12,6 @@ function getComputerChoice(){
     return options[randomNum];
 }
 
-function getHumanChoice(){
-    const playerChoice = prompt("Enter rock, paper or scissors");
-    return playerChoice.toLowerCase();
-}
-
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice){
         resultDisplay.textContent(`It's a tie. Both chose ${humanChoice}`);
@@ -34,7 +29,33 @@ function playRound(humanChoice, computerChoice) {
 
     humanScoreDisplay.textContent = humanScore;
     computerScoreDisplay.textContent = computerScore;
+}
+// Playing the five rounds
+function playGame(){
+    // This resets the scores for a new game
+    humanScore = 0;
+    computerScore = 0;
+    humanScoreDisplay.textContent = 0;
+    computerScoreDisplay.textContent = 0;
+
+    for (let i = 0; i <= 5; i++){
+        let options = prompt(`${i +1}: Enter rock, paper or scissors: `);
+        let humanSelection = options ? options.toLowerCase() : "";
+        let computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+    }
+
+    if (humanScore > computerScore){
+        resultDisplay.textContent("You won the match!!! ;)");
+    } else if (computerScore > humanScore){
+        resultDisplay.textContent("Defeat! The computer won this time around! ");
+    } else {
+        resultDisplay.textContent("It's a total draw!!");
+
+    }
 
 }
+
 
 
